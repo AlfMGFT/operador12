@@ -55,6 +55,8 @@
 
         };
       }
+
+      //Complejo
       static get observers(){
 
         return ['_observarOperadores(suma, resta, multiplicacion, division)']
@@ -63,15 +65,19 @@
       _observarOperadores(suma, resta, multiplicacion, division){
 
         console.log(suma, resta, multiplicacion, division);
-        
+        let total
+        if(division===Infinity){
+          total = suma + resta + multiplicacion;
+          
+        }else{
+          total = suma + resta + multiplicacion + division;
 
-        let total = suma + resta + multiplicacion + division;
-
+        }
         console.log(total)
         return total;
       }
 
-      // simple
+      // Simple
       _infinito(newValue, oldValue) {
         console.log(newValue, oldValue);
         if(newValue===0){
@@ -80,7 +86,7 @@
 
       }
 
-      // computado
+      // Computado
       _getSuma(operador1, operador2) {
         return operador1 + operador2;
       }
