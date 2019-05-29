@@ -25,7 +25,7 @@
         return {
           operador1: {
             type: Number,
-            value: 10
+            value: 10,
           },
           operador2: {
             type: Number,
@@ -34,22 +34,27 @@
           },
           suma: {
             type: Number,
+            readOnly: true,
             computed: '_getSuma(operador1, operador2)'
           },
           resta: {
             type: Number,
+            readOnly: true,
             computed: '_getResta(operador1, operador2)'
           },
           multiplicacion: {
             type: Number,
+            readOnly: true,
             computed: '_getMultiplicacion(operador1, operador2)'
           },
           division: {
             type: Number,
+            readOnly: true,
             computed: '_getDivision(operador1, operador2)'
           },
           total: {
             type: Number,
+            readOnly: true,
             computed: '_observarOperadores(suma, resta, multiplicacion, division)',
           },
 
