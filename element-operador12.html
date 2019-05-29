@@ -1,0 +1,100 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="element-operador12">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Operador1: [[operador1]] Operador2: [[operador2]] Suma: [[suma]] Resta: [[resta]] Multiplicación: [[multiplicacion]] Division: [[division]] Total: [[total]]</h2>
+  </template>
+
+  <script>
+    /**
+     * `element-operador12`
+     * &#34;Ejemplo funcional de polymer&#34;
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class ElementOperador12 extends Polymer.Element {
+      static get is() { return 'element-operador12'; }
+      static get properties() {
+        return {
+          operador1: {
+            type: Number,
+            value: 10
+          },
+          operador2: {
+            type: Number,
+            value: 2,
+            observer: '_infinito'
+          },
+          suma: {
+            type: Number,
+            computed: '_getSuma(operador1, operador2)'
+          },
+          resta: {
+            type: Number,
+            computed: '_getResta(operador1, operador2)'
+          },
+          multiplicacion: {
+            type: Number,
+            computed: '_getMultiplicacion(operador1, operador2)'
+          },
+          division: {
+            type: Number,
+            computed: '_getDivision(operador1, operador2)'
+          },
+          total: {
+            type: Number,
+            observer: '_observarOperadores(suma, resta, multiplicacion, division)'
+          },
+
+        };
+      }
+      static get observers(){
+
+        return ['_observarOperadores(suma, resta, multiplicacion, division)']
+      }
+
+      _observarOperadores(suma, resta, multiplicacion, division){
+
+        console.log(suma, resta, multiplicacion, division);
+        
+
+        let total = suma + resta + multiplicacion + division;
+
+        console.log(total)
+        return total;
+      }
+
+      // simple
+      _infinito(newValue, oldValue) {
+        console.log(newValue, oldValue);
+        if(newValue===0){
+          console.log('La división será Infinity')
+        }
+
+      }
+
+      // computado
+      _getSuma(operador1, operador2) {
+        return operador1 + operador2;
+      }
+      _getResta(operador1, operador2) {
+        return operador1 - operador2;
+      }
+      _getMultiplicacion(operador1, operador2) {
+        return operador1 * operador2;
+      }
+      _getDivision(operador1, operador2) {
+        return operador1 / operador2;
+      }
+    }
+
+    window.customElements.define(ElementOperador12.is, ElementOperador12);
+  </script>
+</dom-module>

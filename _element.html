@@ -1,0 +1,36 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="element-operador12">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]!</h2>
+  </template>
+
+  <script>
+    /**
+     * `element-operador12`
+     * &#34;example&#34;
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class ElementOperador12 extends Polymer.Element {
+      static get is() { return 'element-operador12'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'element-operador12'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(ElementOperador12.is, ElementOperador12);
+  </script>
+</dom-module>
